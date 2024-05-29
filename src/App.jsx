@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home";
@@ -6,14 +6,14 @@ import "./styles/app.module.css";
 import About from "./pages/about";
 import { ConfigProvider } from "antd";
 
-export class App extends PureComponent {
+export class App extends React.Component {
   render() {
     return (
       <div className="app">
         <ConfigProvider
           theme={{
             token: {
-              colorPrimary: "red",
+              colorPrimary: "#FA541C",
               borderRadius: 2,
               colorBgContainer: "#f6ffed",
             },
