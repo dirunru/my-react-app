@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <section>
-      <h1>Home</h1>
+      <h1>Children</h1>
     </section>
   );
 }
