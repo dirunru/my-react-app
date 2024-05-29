@@ -1,6 +1,7 @@
-.logo {
-  height: 100px;
-  width: 100%;
-  background-size: cover;
-  background-image: url('../../assets/images/logo.png') ;
+.footer {
+  text-align: center;
+  height: 60px;
+}
+.content {
+  height: calc(100vh - 144px);
 }
