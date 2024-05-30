@@ -1,37 +1,54 @@
-import React, { Children, useState } from "react";
-import { useNavigate, Routes, Route, useRoutes } from "react-router-dom";
+import React, { useState, getDerivedStateFromProps } from "react";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./styles/app.module.scss";
 import { DownOutlined } from "@ant-design/icons";
-import { Layout, Dropdown, Space, theme, Menu, message } from "antd";
+import {
+  Layout,
+  Breadcrumb,
+  theme,
+  Menu,
+  message,
+  Dropdown,
+  Space,
+} from "antd";
 //引入路由表
-import { routes, RouterView } from "./router";
+import { routeMenus, RouterView } from "./router";
 
 // 布局组件
 const { Header, Content, Footer, Sider } = Layout;
 // 处理路由
 let items = [];
-console.log("./router", routes, RouterView);
-Object.values(routes).map((item, index) => {
-  items.push({
-    key: item.path,
-    icon: item.icon ? React.createElement(item.icon) : "",
-    label: item.title,
-    path: item.path,
-    children: item.children?.map((it) => {
-      return {
-        key: item.path + it?.path,
-        label: it.title,
-        icon: React.createElement(it.icon),
-        path: item.path + "/" + it.path,
-      };
-    }),
-  });
+Object.values(routeMenus).map((item, index) => {
+  if (!item.isHide) {
+    items.push({
+      key: item.key,
+      icon: item.icon ? React.createElement(item.icon) : "",
+      label: item.title,
+      path: item.key,
+      children: item.children?.map((it) => {
+        return {
+          key: item.key + it.key,
+          label: it.title,
+          icon: React.createElement(it.icon),
+          path: item.key + it.key,
+        };
+      }),
+    });
+  }
 });
-let menuArr = [
+const menus = [
   {
+    label: "Clicking me will not close the menu.",
     key: "1",
-    label: "Item 1",
+  },
+  {
+    label: "Clicking me will not close the menu also.",
+    key: "2",
+  },
+  {
+    label: "Clicking me will close the menu.",
+    key: "3",
   },
 ];
 
@@ -56,23 +73,25 @@ const App = () => {
     localStorage.clear(); // 清除localStorage中的数据
     setTimeout(() => navigate("/login"), 1500);
   };
-
+  const [open, setOpen] = useState(false);
+  const handleMenuClick = (e) => {
+    if (e.key === "3") {
+      setOpen(false);
+    }
+  };
+  const handleOpenChange = (nextOpen, info) => {
+    if (info.source === "trigger" || nextOpen) {
+      setOpen(nextOpen);
+    }
+  };
   //生成路由规则
   return (
     <div className="app">
-      <Layout hasSider>
+      <Layout style={{ minHeight: "100vh" }}>
         <Sider
           collapsible
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
-          style={{
-            overflow: "auto",
-            height: "100vh",
-            position: "fixed",
-            left: 0,
-            top: 0,
-            bottom: 0,
-          }}
         >
           <Menu
             theme="dark"
@@ -82,55 +101,38 @@ const App = () => {
             onClick={(item) => onClick(item)}
           />
         </Sider>
-        <Layout
-          style={{
-            marginLeft: 200,
-          }}
-        >
-          <Header
-            style={{
-              height: "60px",
-              background: colorBgContainer,
-            }}
-          >
+        <Layout>
+          <Header style={{ padding: 0, background: colorBgContainer }}>
             <Dropdown
               menu={{
-                menuArr,
+                items: menus,
+                onClick: handleMenuClick,
               }}
-              trigger={["click"]}
+              onOpenChange={handleOpenChange}
+              open={open}
             >
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
-                  Click me
+                  {username}
                   <DownOutlined />
                 </Space>
               </a>
             </Dropdown>
           </Header>
-          <Content
-            style={{
-              margin: "24px 16px 0",
-              overflow: "initial",
-            }}
-          >
+          <Content style={{ margin: "0 16px" }}>
+            <Breadcrumb style={{ margin: "16px 0" }}>
+              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            </Breadcrumb>
             <div
               style={{
                 padding: 24,
-                textAlign: "center",
+                minHeight: 360,
                 background: colorBgContainer,
                 borderRadius: borderRadiusLG,
               }}
-              className={styles.content}
             >
-              <div
-                style={{
-                  padding: 24,
-                  minHeight: "75vh",
-                  background: colorBgContainer,
-                }}
-              >
-                <RouterView />
-              </div>
+              <RouterView />
             </div>
           </Content>
           <Footer className={styles.footer}>
