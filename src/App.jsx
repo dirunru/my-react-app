@@ -1,30 +1,40 @@
 import React, { Children, useState } from "react";
-import { useNavigate, Routes, Route, Outlet } from "react-router-dom";
+import { useNavigate, Routes, Route, useRoutes } from "react-router-dom";
 
 import styles from "./styles/app.module.scss";
-import { Layout, Menu, theme, Breadcrumb } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import { Layout, Dropdown, Space, theme, Menu, message } from "antd";
 //引入路由表
-import routes from "./router";
+import { routes, RouterView } from "./router";
+
 // 布局组件
 const { Header, Content, Footer, Sider } = Layout;
 // 处理路由
 let items = [];
+console.log("./router", routes, RouterView);
 Object.values(routes).map((item, index) => {
-  if (!item.isHide) {
-    items.push({
-      key: item.path,
-      icon: React.createElement(item.icon),
-      label: item.title,
-      path: item.path,
-      // children: [
-      //   { key: "9", label: "Option 9" },
-      //   { key: "10", label: "Option 10" },
-      //   { key: "11", label: "Option 11" },
-      //   { key: "12", label: "Option 12" },
-      // ],
-    });
-  }
+  items.push({
+    key: item.path,
+    icon: item.icon ? React.createElement(item.icon) : "",
+    label: item.title,
+    path: item.path,
+    children: item.children?.map((it) => {
+      return {
+        key: item.path + it?.path,
+        label: it.title,
+        icon: React.createElement(it.icon),
+        path: item.path + "/" + it.path,
+      };
+    }),
+  });
 });
+let menuArr = [
+  {
+    key: "1",
+    label: "Item 1",
+  },
+];
+
 const App = () => {
   // 主题
   const {
@@ -32,12 +42,21 @@ const App = () => {
   } = theme.useToken();
   const [collapsed, setCollapsed] = useState(false);
   const [pathStatu, setPathStatu] = useState("/home");
+  const [username, setUsername] = useState("游客");
+
   // 点击路由进行跳转
   const navigate = useNavigate();
   const onClick = (item) => {
     setPathStatu(item.key);
     navigate(item.key, { replace: true });
   };
+  // 退出登录
+  const logout = () => {
+    message.success("退出成功，即将返回登录页");
+    localStorage.clear(); // 清除localStorage中的数据
+    setTimeout(() => navigate("/login"), 1500);
+  };
+
   //生成路由规则
   return (
     <div className="app">
@@ -73,7 +92,21 @@ const App = () => {
               height: "60px",
               background: colorBgContainer,
             }}
-          />
+          >
+            <Dropdown
+              menu={{
+                menuArr,
+              }}
+              trigger={["click"]}
+            >
+              <a onClick={(e) => e.preventDefault()}>
+                <Space>
+                  Click me
+                  <DownOutlined />
+                </Space>
+              </a>
+            </Dropdown>
+          </Header>
           <Content
             style={{
               margin: "24px 16px 0",
@@ -96,18 +129,7 @@ const App = () => {
                   background: colorBgContainer,
                 }}
               >
-                <Routes>
-                  {routes.map((item, index) => {
-                    return (
-                      <Route
-                        exact
-                        key={index}
-                        path={item.path}
-                        element={item.element}
-                      />
-                    );
-                  })}
-                </Routes>
+                <RouterView />
               </div>
             </div>
           </Content>
