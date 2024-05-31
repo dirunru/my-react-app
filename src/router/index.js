@@ -13,7 +13,7 @@ import {
 } from "@ant-design/icons";
 import About from "../pages/about";
 import Home from "../pages/home";
-import Detail from "../pages/home/detail";
+import Detail from "../pages/detail/index.jsx";
 import Page404 from "../pages/ErrorPage/404.jsx";
 // 左侧 菜单展示
 export const routeMenus = [
