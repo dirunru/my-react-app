@@ -108,6 +108,7 @@ const App = () => {
                 items: menus,
                 onClick: handleMenuClick,
               }}
+              className={styles.dropdown}
               onOpenChange={handleOpenChange}
               open={open}
             >
@@ -119,7 +120,7 @@ const App = () => {
               </a>
             </Dropdown>
           </Header>
-          <Content style={{ margin: "0 16px" }}>
+          <Content className={styles.content}>
             <Breadcrumb style={{ margin: "16px 0" }}>
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>

@@ -14,6 +14,7 @@ babel：将jsx转换成React代码的工具
 ui框架: npm install antd --save
 css使用：npm install --save-dev css-loader style-loader
 scss使用(不需要安装，react支持)：npm install node-sass sass-loader --save-dev
+mockjs: npm install mockjs --save 模拟数据
 ```
 
     react 生命周期：
