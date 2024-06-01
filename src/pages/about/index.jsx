@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 
-class About extends React.Component {
+export default class About extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -32,4 +32,3 @@ class About extends React.Component {
     );
   }
 }
-export default About;
