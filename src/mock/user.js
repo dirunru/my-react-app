@@ -8,7 +8,7 @@ Mock.mock("/mock/banner", "post", {
       {
         id: "@guid",
         name: "@cname",
-        eage: "@integer(18, 100)",
+        age: "@integer(18, 100)",
         time: "@date",
       },
     ],

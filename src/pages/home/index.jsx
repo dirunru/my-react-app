@@ -7,8 +7,9 @@ const log = prettyLog();
 console.log('log.success("hello world");', log);
 log.success("hello world", 111);
 for (const [key, fun] of Object.entries(log)) {
-  log.info("key:", key);
+  log.info("key:", key, "fun", fun);
 }
+
 console.log("Object.entries(log)", Object.entries(log));
 function Home() {
   return (

@@ -1,10 +1,10 @@
 .container {
-  width: 1000px;
-  height: 1000px;
+  width: 400px;
+  height: 400px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  gap: 24px;
+  gap: 10px;
   transition-duration: 0.5s;
   .item {
     text-align: center;

@@ -2,11 +2,6 @@ import requests from "../utils/mockRequests.js";
 import "../mock/user";
 
 export const reqGetBannerList = (data) => {
-  // return requests({
-  //   url: "/banner",
-  //   method: "post",
-  //   data,
-  // });
   return new Promise((resolve, reject) => {
     requests({
       url: "/banner",
