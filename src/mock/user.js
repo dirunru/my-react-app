@@ -4,7 +4,7 @@ const Mock = require("mockjs");
 Mock.mock("/mock/banner", "post", {
   data: {
     code: "200",
-    "list|8": [
+    "list|800": [
       {
         id: "@guid",
         name: "@cname",

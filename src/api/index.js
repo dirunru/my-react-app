@@ -9,6 +9,7 @@ export const reqGetBannerList = (data) => {
       data,
     }).then((res) => {
       if (res.data.code === "200") {
+        console.log("res.data", res.data);
         resolve(res.data);
       } else {
         reject(res.data);

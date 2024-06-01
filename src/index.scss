@@ -1,0 +1,4 @@
+// 全局取消所有的滚动条样式
+::-webkit-scrollbar {
+  width: 0 !important;
+}

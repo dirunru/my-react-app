@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { reqGetBannerList } from "../../api";
 import { Table } from "antd";
+import { getTableScroll } from "../../utils/autoFit";
 
 const columns = [
   {
@@ -22,15 +23,28 @@ const columns = [
 
 export default function Detail() {
   const [tableList, setTableList] = useState([]);
-
+  const [tableHeight, setTableHeight] = useState("");
   useEffect(() => {
     reqGetBannerList().then((res) => {
       setTableList(res.list);
     });
+    const tableHeight = getTableScroll({
+      extraHeight: 120,
+      id: "tableId",
+    });
+    setTableHeight(tableHeight);
   }, []);
   return (
-    <section>
-      <Table dataSource={tableList} columns={columns} />
-    </section>
+    <div>
+      <Table
+        rowKey="id"
+        id="tableId"
+        dataSource={tableList}
+        columns={columns}
+        scroll={{
+          y: tableHeight,
+        }}
+      />
+    </div>
   );
 }

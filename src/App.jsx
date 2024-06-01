@@ -51,7 +51,21 @@ const menus = [
     key: "3",
   },
 ];
+const breadcrumbItems = [
+  {
+    title: "Location",
+  },
 
+  {
+    title: "Application Center",
+  },
+  {
+    title: "Application List",
+  },
+  {
+    title: "An Application",
+  },
+];
 const App = () => {
   // 主题
   const {
@@ -64,6 +78,7 @@ const App = () => {
   // 点击路由进行跳转
   const navigate = useNavigate();
   const onClick = (item) => {
+    console.log(item);
     setPathStatu(item.key);
     navigate(item.key, { replace: true });
   };
@@ -89,6 +104,7 @@ const App = () => {
     <div className="app">
       <Layout style={{ minHeight: "100vh" }}>
         <Sider
+          className={styles.sider}
           collapsible
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
@@ -121,10 +137,10 @@ const App = () => {
             </Dropdown>
           </Header>
           <Content className={styles.content}>
-            <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
+            <Breadcrumb
+              items={breadcrumbItems}
+              style={{ height: "32px", lineHeight: "32px" }}
+            />
             <div
               style={{
                 padding: 24,
