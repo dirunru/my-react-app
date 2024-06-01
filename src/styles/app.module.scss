@@ -16,13 +16,10 @@
   float: right;
 }
 .content {
-  height: calc(100vh - 144px);
+  height: calc(100vh - 170px);
   margin: 0 24px;
-  overflow-y: auto;
 }
 
 .footer {
   text-align: center;
-  height: 60px;
 }
-

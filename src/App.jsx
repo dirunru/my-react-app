@@ -156,7 +156,7 @@ const App = () => {
             </div>
           </Content>
           <Footer className={styles.footer}>
-            Ant Design ©{new Date().getFullYear()} Created by Ant UED
+            Ant Design ©{new Date().getFullYear()} Created by dirunru
           </Footer>
         </Layout>
       </Layout>
