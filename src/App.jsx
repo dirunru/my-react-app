@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./styles/app.module.scss";
@@ -72,16 +72,18 @@ const App = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   const [collapsed, setCollapsed] = useState(false);
-  const [pathStatu, setPathStatu] = useState("/home");
+  const [pathStatu, setPathStatu] = useState("/home/list");
+  const [openKeyMemnu, setOpenKeyMemnu] = useState("/home");
   const [username, setUsername] = useState("游客");
-
   // 点击路由进行跳转
   const navigate = useNavigate();
   const onClick = (item) => {
-    console.log(item);
     setPathStatu(item.key);
     navigate(item.key, { replace: true });
   };
+  useEffect(() => {
+    navigate(pathStatu, { replace: true });
+  }, []);
   // 退出登录
   const logout = () => {
     message.success("退出成功，即将返回登录页");
@@ -110,6 +112,7 @@ const App = () => {
           onCollapse={(value) => setCollapsed(value)}
         >
           <Menu
+            defaultOpenKeys={[openKeyMemnu]}
             theme="dark"
             mode="inline"
             selectedKeys={[pathStatu]}

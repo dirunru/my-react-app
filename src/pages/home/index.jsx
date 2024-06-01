@@ -11,7 +11,7 @@ for (const [key, fun] of Object.entries(log)) {
 }
 
 console.log("Object.entries(log)", Object.entries(log));
-function Home() {
+export default function Home() {
   return (
     <>
       <h3>grid</h3>
@@ -29,4 +29,3 @@ function Home() {
     </>
   );
 }
-export default Home;

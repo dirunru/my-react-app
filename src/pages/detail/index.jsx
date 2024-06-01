@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { reqGetBannerList } from "../../api";
-import { Table } from "antd";
+import { Table, Button } from "antd";
 import { getTableScroll } from "../../utils/autoFit";
 
 const columns = [
@@ -15,12 +15,45 @@ const columns = [
     key: "age",
   },
   {
-    title: "时间",
+    title: "性别",
+    dataIndex: "gender",
+    key: "gender",
+    render: (_, { gender }) => {
+      let color = gender ? "red" : "green";
+      return <div style={{ color: color }}>{gender ? "女" : "男"}</div>;
+    },
+  },
+  {
+    title: "出生时间",
     dataIndex: "time",
     key: "time",
   },
+  {
+    title: "邮箱",
+    dataIndex: "email",
+    key: "email",
+  },
+  {
+    title: "地址",
+    dataIndex: "address",
+    key: "address",
+  },
+  {
+    title: "操作",
+    dataIndex: "actions",
+    key: "actions",
+    render: (_, record) => {
+      return (
+        <Button size="small" onClick={() => handleEdit(record)}>
+          编辑
+        </Button>
+      );
+    },
+  },
 ];
-
+const handleEdit = (e, record) => {
+  console.log(e, record, "record");
+};
 export default function Detail() {
   const [tableList, setTableList] = useState([]);
   const [tableHeight, setTableHeight] = useState("");
