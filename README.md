@@ -15,6 +15,10 @@ ui框架: npm install antd --save
 css使用：npm install --save-dev css-loader style-loader
 scss使用(不需要安装，react支持)：npm install node-sass sass-loader --save-dev
 mockjs: npm install mockjs --save 模拟数据
+
+npm install nrm -g 配置npm镜像源管理
+nrm ls 查看镜像源
+nrm use ** 使用那个镜像源
 ```
 
     react 生命周期：
