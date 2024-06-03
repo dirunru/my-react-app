@@ -4,6 +4,13 @@
     3,cd <项目名称>
     4,npm start 启动项目
     5,code . vscode打开项目
+### 创建react项目
+    npm: npm create vite@latest <项目名：vite-react-ts> react-ts
+    npm create vite@latest <项目名：vite-react> react
+    yarn：yarn create vite <项目名：vite-react-ts--template> react-ts
+    pnpm：pnpm create vite vite-react-ts-- --template react-ts
+    
+    例如：yarn create vite vite-react react
 
 插件
 ```
