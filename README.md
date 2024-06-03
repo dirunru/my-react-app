@@ -19,6 +19,8 @@ mockjs: npm install mockjs --save 模拟数据
 npm install nrm -g 配置npm镜像源管理
 nrm ls 查看镜像源
 nrm use ** 使用那个镜像源
+nrm add <名称：cnpm> <地址:http://192.168.22.11:8888/repository/npm-public/>
+nrm del <名称：cpm>
 ```
 
     react 生命周期：
