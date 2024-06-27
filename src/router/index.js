@@ -196,6 +196,10 @@ const routes = [
     redirect: "/home/list",
     element: <Home />,
   },
+  {
+    path: "*",
+    element: <Page404 />,
+  },
 ];
 // 使用useRoutes 创建
 export const RouterView = () => {

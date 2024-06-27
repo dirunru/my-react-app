@@ -8,10 +8,20 @@
     npm: npm create vite@latest <项目名：vite-react-ts> react-ts
     npm create vite@latest <项目名：vite-react> react
     yarn：yarn create vite <项目名：vite-react-ts--template> react-ts
+
     pnpm：pnpm create vite vite-react-ts-- --template react-ts
+    1-| pnpm create vite：使用pnpm创建一个新的vite项目。
+    2-| vite-react-ts：新项目的名称。
+    3-| --template react-ts：指定项目模板为react-ts，这意味着创建的项目将包含一个基础的React项目结构，并且使用TypeScript作为编程语言。
     
     例如：yarn create vite vite-react react
+---
+    现在官网却推荐使用：creact-next-app:  npx create-next-app@latest <项目名称> 最新版本
+    npm init vite
 
+
+
+    
 插件
 ```
 react：包含react所必须的核心代码
