@@ -1,16 +1,7 @@
 // 路由表
 // routes/index.js
-import { Navigate, redirect, useRoutes } from "react-router-dom";
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
+import { useRoutes } from "react-router-dom";
+import { CloudOutlined, UserOutlined } from "@ant-design/icons";
 import About from "../pages/about";
 import Home from "../pages/home";
 import Detail from "../pages/detail/index.jsx";
