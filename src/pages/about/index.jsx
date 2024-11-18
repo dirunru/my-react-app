@@ -1,7 +1,8 @@
 import React from "react";
 import { Button } from "antd";
 
-export default class About extends React.Component {
+export default class About extends React.Component { 
+  // === export default function About() {}
   constructor(props) {
     super(props);
   }
