@@ -33,6 +33,7 @@ css使用：npm install --save-dev css-loader style-loader
     css-loader: 会对 @import 和 url() 进行处理，就像 js 解析 import/require() 一样。
     style-loader:把 CSS 插入到 DOM 中。
 scss使用(不需要安装，react支持)：npm install node-sass sass-loader --save-dev
+less使用：npm install less less-loader --save-dev
 mockjs: npm install mockjs --save 模拟数据
 
 npm install nrm -g 配置npm镜像源管理
